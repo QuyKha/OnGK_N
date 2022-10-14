@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kt giua ki</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        table{
+            border: 2px solid gray;
+        }
+        th,td {
+            border-right: 1px dashed gray;
+        }
+        .btn-add{
+            margin: 10px;
+            margin-left: 0;
+            width: 10em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container ">
+        <center>
+            <h1>Danh sach tuyen du lich</h1>
+        </center>
+        <a href="http://localhost:3000/form-add" class="btn-add btn btn-primary">Them tour</a>
+        <table class="table table-striped">
+            <tr>
+                <th class="col">STT</th>
+                <th class="col">Ten Tour</th>
+                <th class="col">The Loai</th>
+                <th class="col">Thoi Gian</th>
+                <th class="col">Gia</th>
+                <th class="col">Ghi chu</th>
+                <th class="col">Tac vu</th>
+            </tr>
+            <% var i =1; data.forEach((o) =>{ %>
+                <tr>
+                    <td>
+                        <%= i%>
+                    </td>
+                    <td>
+                        <%= o.tenTour%>
+                    </td>
+                    <td>
+                        <%= o.theLoai%>
+                    </td>
+                    <td>
+                        <%= o.thoiGian%>
+                    </td>
+                    <td>
+                        <%= o.gia%>
+                    </td>
+                    <td>
+                        <%= o.ghiChu%>
+                    </td>
+                    <td>
+                        <form action="/delete" method="post" enctype="multipart/form-data">
+                            <input type="hidden" value="<%= o.maTour%>" name="maTour">
+                            <input type="submit" class="btn btn-danger" value="Xoa">
+                        </form>
+                    </td>
+                </tr>
+                <% i += 1; }); %>
+        </table>
+        <h6>Thiet ke boi Nguyen Hai Nam - 19528341</h6>
+    </div>
+</body>
+
+</html>
